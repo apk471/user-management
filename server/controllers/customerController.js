@@ -6,9 +6,6 @@ const mongoose = require("mongoose");
  * Homepage
  */
 exports.homepage = async (req, res) => {
-  // Remove
-  // const messages = await req.consumeFlash('info');
-  // Use this instead
   const messages = await req.flash("info");
 
   const locals = {
@@ -24,8 +21,7 @@ exports.homepage = async (req, res) => {
       .skip(perPage * page - perPage)
       .limit(perPage)
       .exec();
-    // Count is deprecated. Use countDocuments({}) or estimatedDocumentCount()
-    // const count = await Customer.count();
+
     const count = await Customer.countDocuments({});
 
     res.render("index", {
@@ -39,20 +35,6 @@ exports.homepage = async (req, res) => {
     console.log(error);
   }
 };
-// exports.homepage = async (req, res) => {
-//     const messages = await req.consumeFlash('info');
-//     const locals = {
-//       title: 'NodeJs',
-//       description: 'Free NodeJs User Management System'
-//     }
-
-//     try {
-//       const customers = await Customer.find({}).limit(22);
-//       res.render('index', { locals, messages, customers } );
-//     } catch (error) {
-//       console.log(error);
-//     }
-// }
 
 /**
  * GET /
