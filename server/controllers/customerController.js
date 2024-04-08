@@ -1,10 +1,6 @@
 const Customer = require("../models/Customer");
 const mongoose = require("mongoose");
 
-/**
- * GET /
- * Homepage
- */
 exports.homepage = async (req, res) => {
   const messages = await req.flash("info");
 
@@ -36,10 +32,6 @@ exports.homepage = async (req, res) => {
   }
 };
 
-/**
- * GET /
- * About
- */
 exports.about = async (req, res) => {
   const locals = {
     title: "About",
